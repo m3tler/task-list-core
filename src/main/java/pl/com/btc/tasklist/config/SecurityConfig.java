@@ -10,7 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.authorizeHttpRequests().anyRequest().authenticated().and().formLogin().and().httpBasic().and().build();
+        return http.cors().and().authorizeHttpRequests().anyRequest().authenticated().and().formLogin().and().httpBasic().and().build();
     }
 
     @Bean
