@@ -43,7 +43,7 @@ public class Task {
     }
 
     public void setDone(boolean isDone) {
-        isDone = isDone;
+        this.isDone = isDone;
     }
 
     public LocalDateTime getDeadline() {
