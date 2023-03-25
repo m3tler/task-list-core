@@ -34,8 +34,8 @@ public class TaskController {
         return ResponseEntity.of(taskService.updateTask(id, task));
     }
 
-    @DeleteMapping("{id}")
-    public void deleteTask(@PathVariable("id") Long id) {
-        taskService.deleteTask(id);
+    @DeleteMapping("{ids}")
+    public void deleteTask(@PathVariable List<Long> ids) {
+        taskService.deleteTasks(ids);
     }
 }

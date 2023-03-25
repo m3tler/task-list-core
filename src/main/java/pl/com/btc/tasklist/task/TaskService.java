@@ -36,7 +36,7 @@ public class TaskService {
         return Optional.of(taskRepository.save(task));
     }
 
-    public void deleteTask(Long id) {
-        taskRepository.deleteById(id);
+    public void deleteTasks(List<Long> ids) {
+        taskRepository.deleteAllById(ids);
     }
 }
