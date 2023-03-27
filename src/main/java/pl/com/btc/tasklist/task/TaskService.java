@@ -29,7 +29,7 @@ public class TaskService {
     }
 
     public Optional<Task> updateTaskForUser(String username, Long id, Task task) {
-        if(!taskRepository.existsById(id)) {
+        if (!taskRepository.existsById(id)) {
             return Optional.empty();
         }
 

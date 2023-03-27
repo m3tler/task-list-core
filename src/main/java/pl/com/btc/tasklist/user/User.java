@@ -1,6 +1,9 @@
 package pl.com.btc.tasklist.user;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,16 +20,24 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
+    @Size(min = 1)
     private String firstName;
+    @NotNull
+    @Size(min = 1)
     private String lastName;
+    @Email
     private String email;
+    @NotNull
+    @Size(min = 8)
     private String password;
     @Enumerated(EnumType.STRING)
     private UserRole role;
     @OneToMany(mappedBy = "user")
     private List<Task> tasks = new ArrayList<>();
 
-    public User() {}
+    public User() {
+    }
 
     public User(String firstName, String lastName, String email, String password, UserRole role) {
         this.firstName = firstName;
