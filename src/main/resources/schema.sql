@@ -1,12 +1,5 @@
+DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS tasks;
-DROP TABLE IF EXISTS users;
-
-CREATE TABLE tasks (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
-    is_done BOOLEAN,
-    deadline TIMESTAMP
-);
 
 CREATE TABLE users (
     id SERIAL  PRIMARY KEY,
@@ -16,3 +9,12 @@ CREATE TABLE users (
     password VARCHAR(255),
     role VARCHAR(5)
 );
+
+CREATE TABLE tasks (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    is_done BOOLEAN,
+    deadline TIMESTAMP,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+);
+

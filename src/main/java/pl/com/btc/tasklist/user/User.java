@@ -4,9 +4,12 @@ import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import pl.com.btc.tasklist.task.Task;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -20,6 +23,8 @@ public class User implements UserDetails {
     private String password;
     @Enumerated(EnumType.STRING)
     private UserRole role;
+    @OneToMany(mappedBy = "user")
+    private List<Task> tasks = new ArrayList<>();
 
     public User() {}
 
@@ -79,6 +84,14 @@ public class User implements UserDetails {
         this.role = role;
     }
 
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority =
@@ -120,6 +133,7 @@ public class User implements UserDetails {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
+                ", tasks=" + tasks +
                 '}';
     }
 }

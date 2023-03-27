@@ -1,7 +1,8 @@
 package pl.com.btc.tasklist.task;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import pl.com.btc.tasklist.user.User;
 
 import java.time.LocalDateTime;
 
@@ -14,6 +15,10 @@ public class Task {
     private String name;
     private boolean isDone;
     private LocalDateTime deadline;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Task() {}
 
@@ -53,6 +58,14 @@ public class Task {
 
     public void setDeadline(LocalDateTime deadline) {
         this.deadline = deadline;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
