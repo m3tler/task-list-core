@@ -21,7 +21,7 @@ First of all you need to clone the application using ```git clone https://github
 
 Next you need to run PostgreSQL database server and set the connection configuration:
 1. Go to ./src/main/resources/application.xml file.
-2. Set following properties:
+2. Set the following properties:
 - spring.datasource.url
 - spring.datasource.username
 - spring.datasource.password
