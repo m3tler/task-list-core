@@ -26,7 +26,7 @@ Next you need to run PostgreSQL database server and set the connection configura
 - spring.datasource.username
 - spring.datasource.password
 
-**Important:** Before the app installation on the Tomcat server make sure you have Java 17 installed and JAVA_HOME enviroment variable set.
+**Important:** Before the app installation on the Tomcat server make sure you have Java 17 and Maven installed, and JAVA_HOME enviroment variable is set.
 
 To set up the application follow these steps:
 1. Build the application using ```mvn clean package``` command.
