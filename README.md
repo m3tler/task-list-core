@@ -16,11 +16,13 @@ Project is created with:
 
 ## Set up
 This section shows how to set up and install the application on the Tomcat server.
+
+**Important:** Before the installation make sure you have Java 17 installed and JAVA_HOME enviroment variable set.
+
+To set up the application follow these steps:
 1. Clone the application using ```git clone https://github.com/m3tler/task-list-core.git``` 
 2. Build the application using ```mvn clean package``` command.
 3. Copy api.war file from the ./target folder.
 4. Paste file to the ./webapps folder in the Tomcat container.
 5. Move to the ./bin folder and open command prompt.
 6. Run the application using ```catalina.bat run``` command.
-
-**Important:** Make sure you have Java 17 installed and JAVA_HOME enviroment variable set.
