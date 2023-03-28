@@ -16,7 +16,7 @@ Project is created with:
 
 ## Set up
 This section shows how to set up and install the application on the Tomcat server.
-1. Clone the application using ```git clone``` 
+1. Clone the application using ```git clone https://github.com/m3tler/task-list-core.git``` 
 2. Build the application using ```mvn clean package``` command.
 3. Copy api.war file from the ./target folder.
 4. Paste file to the ./webapps folder in the Tomcat container.
