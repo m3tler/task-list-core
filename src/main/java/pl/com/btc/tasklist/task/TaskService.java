@@ -1,5 +1,6 @@
 package pl.com.btc.tasklist.task;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.com.btc.tasklist.user.User;
 import pl.com.btc.tasklist.user.UserService;
@@ -8,14 +9,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class TaskService {
+
     private final TaskRepository taskRepository;
     private final UserService userService;
-
-    public TaskService(TaskRepository taskRepository, UserService userService) {
-        this.taskRepository = taskRepository;
-        this.userService = userService;
-    }
 
     public List<Task> getTasksForUser(String username) {
         User user = userService.loadUserByUsername(username);

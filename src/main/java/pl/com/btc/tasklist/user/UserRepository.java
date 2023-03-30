@@ -9,5 +9,6 @@ import java.util.Optional;
 @Repository
 @Transactional(readOnly = true)
 public interface UserRepository extends CrudRepository<User, Long> {
+
     Optional<User> findByEmail(String email);
 }

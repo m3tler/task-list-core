@@ -1,5 +1,6 @@
 package pl.com.btc.tasklist.task;
 
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -8,12 +9,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/tasks")
+@AllArgsConstructor
 public class TaskController {
-    private final TaskService taskService;
 
-    public TaskController(TaskService taskService) {
-        this.taskService = taskService;
-    }
+    private final TaskService taskService;
 
     @GetMapping
     public List<Task> getTasks(Authentication authentication) {
