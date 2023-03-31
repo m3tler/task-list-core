@@ -6,7 +6,8 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication
 public class TaskListApplication extends SpringBootServletInitializer {
-	public static void main(String[] args) {
-		SpringApplication.run(TaskListApplication.class, args);
-	}
+
+    public static void main(String[] args) {
+        SpringApplication.run(TaskListApplication.class, args);
+    }
 }

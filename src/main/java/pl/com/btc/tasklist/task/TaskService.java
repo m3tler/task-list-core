@@ -1,6 +1,9 @@
 package pl.com.btc.tasklist.task;
 
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import pl.com.btc.tasklist.user.User;
 import pl.com.btc.tasklist.user.UserService;
@@ -15,9 +18,9 @@ public class TaskService {
     private final TaskRepository taskRepository;
     private final UserService userService;
 
-    public List<Task> getTasksForUser(String username) {
+    public Page<Task> getTasksForUser(String username, Specification<Task> specification, Pageable pageable) {
         User user = userService.loadUserByUsername(username);
-        return taskRepository.findAllByUserId(user.getId());
+        return taskRepository.findAll(specification, pageable);
     }
 
     public Task addNewTaskForUser(String username, Task task) {
@@ -31,20 +34,21 @@ public class TaskService {
             return Optional.empty();
         }
 
-        List<Task> tasksForUser = getTasksForUser(username);
+        User user = userService.loadUserByUsername(username);
+        List<Task> tasksForUser = taskRepository.findAllByUserId(user.getId());
         Task taskToUpdate = taskRepository.findById(id).get();
         if (!tasksForUser.contains(taskToUpdate)) {
             return Optional.empty();
         }
 
-        User user = userService.loadUserByUsername(username);
         task.setId(id);
         task.setUser(user);
         return Optional.of(taskRepository.save(task));
     }
 
     public void deleteTasksForUser(String username, List<Long> ids) {
-        List<Task> tasksForUser = getTasksForUser(username);
+        User user = userService.loadUserByUsername(username);
+        List<Task> tasksForUser = taskRepository.findAllByUserId(user.getId());
         List<Long> finalIds = ids;
         ids = tasksForUser.stream().map(Task::getId).filter(finalIds::contains).toList();
         taskRepository.deleteAllById(ids);
