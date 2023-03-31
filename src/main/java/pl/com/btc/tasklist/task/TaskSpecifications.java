@@ -26,7 +26,7 @@ public class TaskSpecifications {
         };
     }
 
-    public static Specification<Task> taskIsDone(String isDone) {
+    public static Specification<Task> taskDoneIs(String isDone) {
         return (root, query, cb) -> {
             if (isDone == null) {
                 return cb.isTrue(cb.literal(true));

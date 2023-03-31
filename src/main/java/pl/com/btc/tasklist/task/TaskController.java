@@ -38,7 +38,7 @@ public class TaskController {
         User user = userService.loadUserByUsername(authentication.getName());
         Specification<Task> specification = Specification.where(taskBelongsToUser(user)
                 .and(taskNameContains(name))
-                .and(taskIsDone(done))
+                .and(taskDoneIs(done))
                 .and(taskDeadlineIsBetween(from, to)));
 
         Sort.Order order = new Sort.Order(Sort.Direction.fromString(sortOrder), sortBy);
