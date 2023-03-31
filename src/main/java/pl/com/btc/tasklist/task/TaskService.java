@@ -18,8 +18,7 @@ public class TaskService {
     private final TaskRepository taskRepository;
     private final UserService userService;
 
-    public Page<Task> getTasksForUser(String username, Specification<Task> specification, Pageable pageable) {
-        User user = userService.loadUserByUsername(username);
+    public Page<Task> getTasksForUser(Specification<Task> specification, Pageable pageable) {
         return taskRepository.findAll(specification, pageable);
     }
 

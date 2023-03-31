@@ -44,7 +44,7 @@ public class TaskController {
         Sort.Order order = new Sort.Order(Sort.Direction.fromString(sortOrder), sortBy);
         Pageable pageable = PageRequest.of(page, size, Sort.by(order));
 
-        return taskService.getTasksForUser(authentication.getName(), specification, pageable);
+        return taskService.getTasksForUser(specification, pageable);
     }
 
     @PostMapping
