@@ -37,13 +37,29 @@ public class TaskSpecifications {
 
     public static Specification<Task> taskDeadlineIsBetween(String from, String to) {
         return (root, query, cb) -> {
-            if (from == null || to == null) {
+            if (from == null && to == null) {
                 return cb.isTrue(cb.literal(true));
             }
 
             try {
-                LocalDateTime fromDateTime = LocalDateTime.parse(from, DateTimeFormatter.ISO_DATE_TIME);
-                LocalDateTime toDateTime = LocalDateTime.parse(to, DateTimeFormatter.ISO_DATE_TIME);
+                LocalDateTime fromDateTime = null;
+                if (from != null) {
+                    fromDateTime = LocalDateTime.parse(from, DateTimeFormatter.ISO_DATE_TIME);
+                }
+
+                LocalDateTime toDateTime = null;
+                if (to != null) {
+                    toDateTime = LocalDateTime.parse(to, DateTimeFormatter.ISO_DATE_TIME);
+                }
+
+                if (to == null) {
+                    return cb.greaterThanOrEqualTo(root.get("deadline"), fromDateTime);
+                }
+
+                if (from == null) {
+                    return cb.lessThanOrEqualTo(root.get("deadline"), toDateTime);
+                }
+
                 return cb.between(root.get("deadline"), fromDateTime, toDateTime);
             } catch (DateTimeParseException e) {
                 return cb.isTrue(cb.literal(true));
