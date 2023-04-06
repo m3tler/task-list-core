@@ -7,8 +7,11 @@
 HELP.md,1\a\1a273f73b7a477b0745593641bd708a6182c7ad5
 o
 ?src/test/java/pl/com/btc/tasklist/TaskListApplicationTests.java,a\6\a6cf44970a3b8402aea244064f1eabfb9b8541b6
-:
-
-.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+d
+4src/main/java/pl/com/btc/tasklist/user/UserRole.java,9\5\95e75b2e243884249ae987b0add31717407561f6
+g
+7src/main/java/pl/com/btc/tasklist/user/UserService.java,a\3\a3b85b14fe18e5b6b3c54b6a91e4ec1565fde457
+`
+0src/main/java/pl/com/btc/tasklist/user/User.java,7\5\7505c4c7bc24b649f423aa27dcc3f39b7fa54209
+j
+:src/main/java/pl/com/btc/tasklist/task/TaskRepository.java,3\c\3c519e964faa425d9d8e80549e0ceca4e951df4a
