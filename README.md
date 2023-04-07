@@ -15,22 +15,38 @@ Project is created with:
 * Maven: 3.8.1
 
 ## Set up
+
 This section shows how to set up and install the application on the Tomcat server.
 
-First of all you need to clone the application using ```git clone https://github.com/m3tler/task-list-core.git```
+First of all you need to clone the application using<br />
+```git clone https://github.com/m3tler/task-list-core.git```
 
-Next you need to run PostgreSQL database server and set the connection configuration:
-1. Go to ./src/main/resources/application.xml file.
+Next, you need to run PostgreSQL database server and set the connection configuration:
+
+1. Go to ./src/main/resources/application.yml file.
 2. Set the following properties:
+
 - spring.datasource.url
 - spring.datasource.username
 - spring.datasource.password
 
-**Important:** Before the app installation on the Tomcat server make sure you have Java 17 and Maven installed, and JAVA_HOME enviroment variable is set.
+Next, you need to set CORS configuration in the same file. Set the following properties (deleted properties will be set
+to default values) :
+
+- app.cors.allowed-origins
+- app.cors.allowed-headers
+- app.cors.allowed-methods
+- app.cors.exposed-headers
+- app.cors.max-age
+- app.cors.allow-credentials
+
+**Important:** Before the app installation on the Tomcat server make sure you have Java 17 and Maven installed, and
+JAVA_HOME enviroment variable is set.
 
 To set up the application follow these steps:
+
 1. Build the application using ```mvn clean package``` command.
-2. Copy api.war file from the ./target folder.
+2. Copy api.war file from the ./target folder
 3. Paste file to the ./webapps folder in the Tomcat container.
 4. Go to the ./bin folder and open command prompt.
 5. Run the application using ```catalina.bat run``` command.
