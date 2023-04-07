@@ -26,27 +26,27 @@ Next, you need to run PostgreSQL database server and set the connection configur
 1. Go to ./src/main/resources/application.yml file.
 2. Set the following properties:
 
-- spring.datasource.url
-- spring.datasource.username
-- spring.datasource.password
+- spring.datasource.url,
+- spring.datasource.username,
+- spring.datasource.password.
 
 Next, you need to set CORS configuration in the same file. Set the following properties (deleted properties will be set
 to default values) :
 
-- app.cors.allowed-origins
-- app.cors.allowed-headers
-- app.cors.allowed-methods
-- app.cors.exposed-headers
-- app.cors.max-age
-- app.cors.allow-credentials
+- app.cors.allowed-origins,
+- app.cors.allowed-headers,
+- app.cors.allowed-methods,
+- app.cors.exposed-headers,
+- app.cors.max-age,
+- app.cors.allow-credentials.
 
 **Important:** Before the app installation on the Tomcat server make sure you have Java 17 and Maven installed, and
-JAVA_HOME enviroment variable is set.
+JAVA_HOME environment variable is set.
 
 To set up the application follow these steps:
 
 1. Build the application using ```mvn clean package``` command.
-2. Copy api.war file from the ./target folder
+2. Copy api.war file from the ./target folder.
 3. Paste file to the ./webapps folder in the Tomcat container.
 4. Go to the ./bin folder and open command prompt.
 5. Run the application using ```catalina.bat run``` command.
