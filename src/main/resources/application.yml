@@ -11,7 +11,7 @@ spring:
       ddl-auto: none
   sql:
     init:
-      mode: always
+      mode: never
 app:
   cors:
     allowed-origins: "http://localhost:5173"
